@@ -1,0 +1,97 @@
+
+
+int x=100;
+int velX=3;//velocity x determining the movement of ellipse in x diection
+int velY=3; //velocity x determining the movement of ellipse in x diection
+int y=100;
+int move=0;//determing the position of paddle along x axis
+int strike;
+
+PFont font;
+
+
+void setup()
+{
+size(1000,700);//terminal window size
+  font = loadFont("Arial-Black-48.vlw");
+}
+
+void draw(){
+  background(155);//background colour of output window
+  
+  textFont (font);
+  
+  fill(256,0,0);
+  ellipse(x,y,50,50);//size of ellipse
+  
+  fill(0);
+  text("Task 2: Game",10,300);
+  text("Click on the screen to start.\nPress 'a' for left and 'd' for right.",150,100);//inserting instructions to terminam for user
+
+   
+//for the motion of ball along x and y direction , increasing the position of ellipse with velX and velY factor
+    x= x + velX;
+  y=y+velY;
+  if(x>width-25|| x<25)//detreming the boundary conditions to bounce back 
+  {
+    velX=velX*-1; //changing the motion from boundary by 180 degrees 
+  }
+  if( y<25) //detreming the boundary conditions to bounce back 
+  {
+  velY=velY*-1;
+  }
+  if(y>height-25)  //detreming the boundary conditions to bounce back 
+  {
+    velY=velY*-1;  //changing the motion from boundary by 180 degrees 
+  }
+ if( y>600)
+ {
+      if(x>move && x<move+250)//determining the position of moving paddle 
+      {
+       velY=velY*-1;// bounce back from paddle by changing motion by 180degrees
+      }
+      //else
+      //{
+      
+      //}
+ }
+ // if( y>600)
+ //{
+ //     if(x>move-125 && x<move+125)
+ //     {
+ //      velY=velY*-1;
+ //     }
+ //     else
+ //     {
+      
+ //     }
+ //}
+ if(y==height)
+ {
+ text("GAME LOST",400,400);
+ }
+  fill(0,255,0);
+  rect(move,630,250,50);
+  
+//    if(  key == 'd'  )
+  
+//{
+//     move=move+4;
+//}
+// if(  && key == 'a'  )
+// {
+//   move=move-4;
+// }
+//}
+       
+  
+  if( keyPressed == true && key == 'd'  )//assigning keys to move paddle along x axis
+  
+{
+     move=move+4;//movement towards right 
+}
+ if( keyPressed == true && key == 'a'  ) //assigning keys to move paddle along x axis
+ {
+   move=move-4;//movement towards left
+ }
+}
